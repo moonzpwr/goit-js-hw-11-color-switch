@@ -21,17 +21,19 @@ startBtnRef.addEventListener('click', changeBodycolor)
 stopBtnRef.addEventListener('click', stopChangeBodycolor)
 
 function changeBodycolor() {
-    if (isColorChange === true) { 
-        return;
-    }
+  // if (isColorChange === true) { 
+  //       return;
+  //   }
     colorPickerId = setInterval(setRandomColor, 1000)
     isColorChange = true;
+    startBtnRef.disabled = true;
     function setRandomColor() {
         bodyRef.style.backgroundColor = `${colors[randomIntegerFromInterval(0, colors.length)]}`;
     }
 }
 
 function stopChangeBodycolor() {
+    startBtnRef.disabled = false;
     clearInterval(colorPickerId);
         isColorChange = false;
 }
